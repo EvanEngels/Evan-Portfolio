@@ -1,0 +1,17 @@
+.DS_Store
+node_modules/
+.next/
+.turbo/
+dist/
+coverage/
+.env
+.env.*
+!.env.example
+*.log
+.vercel/
+.expo/
+supabase/.temp/
+*.tsbuildinfo
+next-env.d.ts
+.vercel
+.env*
