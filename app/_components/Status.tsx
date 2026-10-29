@@ -42,7 +42,8 @@ const SIDE_PROJECTS: SideProjectProps[] = [
         logo: UserGroup,
         title: "Othalia",
         description: "Family organization app (shared tasks, calendar…). In closed beta on iOS (TestFlight) and Android, used daily by my family before a public release.",
-        url: "/"
+        url: "https://othalia-famille.james5983.chatgpt.site/#",
+        badge: true
     },
     {
         logo: Leaf,

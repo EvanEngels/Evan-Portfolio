@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge";
 import { LucideIcon } from "lucide-react";
 import Link from "next/link";
 
@@ -6,6 +7,7 @@ export type SideProjectProps = {
     title: string;
     description: string;
     url: string;
+    badge?: boolean
 };
 
 export const SideProject = (props: SideProjectProps) => {
@@ -15,7 +17,10 @@ export const SideProject = (props: SideProjectProps) => {
                 <props.logo size={16} />
             </span>
             <div>
-                <p className="text-lg font-semibold">{props.title}</p>
+                <div className="flex items-center gap-2">
+                    <p className="text-lg font-semibold">{props.title}</p>
+                    {props.badge && <Badge variant="outline">Closed beta · iOS & Android</Badge>}
+                </div>
                 <p className="text-sm text-muted-foreground">{props.description}</p>
             </div>
         </Link>
