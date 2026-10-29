@@ -1,8 +1,9 @@
 import { Card } from "@/components/ui/card";
 import { Section } from "./Section";
-import { ArrowUpRight, Code, LucideIcon } from "lucide-react";
-import Link from "next/link";
-import { Badge } from "@/components/ui/badge";
+import { Code } from "lucide-react";
+import { SideProject, SideProjectProps } from "./SideProject";
+import { Work, WorkProps} from "./Work"
+import { ContactCard } from "./ContactCard";
 
 export const Status = () => {
     return (
@@ -75,27 +76,6 @@ const SIDE_PROJECTS: SideProjectProps[] = [
     }
 ];
 
-type SideProjectProps = {
-    logo: LucideIcon;
-    title: string;
-    description: string;
-    url: string;
-};
-
-const SideProject = (props: SideProjectProps) => {
-    return (
-        <Link href={props.url} className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded">
-            <span className="bg-accent text-accent-foreground p-3 rounded-sm">
-                <props.logo size={16} />
-            </span>
-            <div>
-                <p className="text-lg font-semibold">{props.title}</p>
-                <p className="text-sm text-muted-foreground">{props.description}</p>
-            </div>
-        </Link>
-    )
-}
-
 const WORKS: WorkProps[] = [
     {
         image: "/images/works/1.png",
@@ -122,53 +102,3 @@ const WORKS: WorkProps[] = [
         freelance: true
     },
 ];
-
-type WorkProps = {
-    image: string;
-    title: string;
-    role: string;
-    date: string;
-    url: string;
-    freelance?: boolean;
-};
-
-const Work = (props: WorkProps) => {
-    return (
-        <Link href={props.url} className="inline-flex items-center gap-4 hover:bg-accent/50 transition-colors p-1 rounded">
-                <img src={props.image} alt={props.title} className="w-10 h-10 object-contain rounded-md" />
-            <div className="mr-auto">
-                <div className="flex items-center gap-2">
-                    <p className="text-lg font-semibold">{props.title}</p>
-                    {props.freelance && <Badge variant="outline">Mission</Badge>}
-                </div>
-                <p className="text-sm text-muted-foreground">{props.role}</p>
-            </div>
-            <div>
-                <p className="text-xs text-end text-muted-foreground">{props.date}</p>
-            </div>
-        </Link>
-    )
-}
-
-const ContactCard = (props: {
-    image: string;
-    meduimImage: string;
-    name: string;
-    description: string;
-}) => {
-    return (
-        <Link href="#" className="p-3 bg-accent/10 hover:bg-accent/30 transition-colors group flex flex-row items-center gap-4 rounded-lg border border-accent">
-            <div className="relative">
-                <img src={props.image} alt={props.name} className="w-10 h-10 object-contain rounded-full" />
-                <img src={props.meduimImage} alt={props.name} className="absolute -bottom-1 -right-1 w-4 h-4 rounded-full" />
-            </div>
-            <div className="mr-auto">
-                <div className="flex items-center gap-2">
-                    <p className="text-lg font-semibold">{props.name}</p>
-                </div>
-                <p className="text-xs text-muted-foreground">{props.description}</p>
-            </div>
-            <ArrowUpRight className="group-hover:translate-x-2 group-hover:-translate-y-2 transition-transform mr-4" size={16} />
-        </Link>
-    )
-}
