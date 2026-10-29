@@ -1,16 +1,10 @@
 import { Section } from "./Section"
 import Image from "next/image";
 import evanImage from "../images/Evan.jpeg"
-import { ComponentPropsWithoutRef } from "react";
-import { cn } from "@/lib/utils";
+import { Code } from "./Code";
 import { GitHubIcon } from "./icons/GithubIcon";
 import Link from "next/link";
 
-const Code = ({ className, ...props }: ComponentPropsWithoutRef<'span'>) => {
-    return (
-        <span className={cn("bg-accent/30 font-mono border border-accent hover:bg-accent/50 px-1 py-0.5 rounded-sm text-primary", className)} {...props} />
-    )
-}
 
 export const Hero = () => {
     return (
