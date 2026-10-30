@@ -7,7 +7,7 @@ export type SideProjectProps = {
     title: string;
     description: string;
     url: string;
-    badge?: boolean
+    badge?: string
 };
 
 export const SideProject = (props: SideProjectProps) => {
@@ -19,7 +19,7 @@ export const SideProject = (props: SideProjectProps) => {
             <div>
                 <div className="flex items-center gap-2">
                     <p className="text-lg font-semibold">{props.title}</p>
-                    {props.badge && <Badge variant="outline">Closed beta · iOS & Android</Badge>}
+                    {props.badge && <Badge variant="outline">{props.badge}</Badge>}
                 </div>
                 <p className="text-sm text-muted-foreground">{props.description}</p>
             </div>

@@ -1,107 +1,95 @@
 import { Card } from "@/components/ui/card";
 import { Section } from "./Section";
-import { Amphora, BookType, Code, FlaskConical, Leaf, UserGroup } from "lucide-react";
-import { SideProject, SideProjectProps } from "./SideProject";
-import { Work, WorkProps} from "./Work"
+import { Amphora, Code, FlaskConical, Leaf, UserGroup, LucideIcon } from "lucide-react";
+import { SideProject } from "./SideProject";
+import { Work } from "./Work"
 import { ContactCard } from "./ContactCard";
+import { getDictionary } from "../_i18n";
+import type { Dictionary } from "../_i18n/fr";
+import { CONTACTS, EMAIL } from "./contacts";
 
-export const Status = () => {
+export const Status = async () => {
+    const dict = await getDictionary();
     return (
         <Section className="flex max-md:flex-col items-start gap-4">
             <div className="flex-[3] w-full">
                 <Card className="w-full p-4 flex flex-col gap-4">
-                    <p className="text-lg text-muted-foreground">Side projects.</p>
+                    <p className="text-lg text-muted-foreground">{dict.status.sideProjects}</p>
                     <div className="flex flex-col gap-4">
-                        {SIDE_PROJECTS.map((project, index) => (
-                            <SideProject key={index} {...project} />
+                        {SIDE_PROJECTS.map((project) => (
+                            <SideProject
+                            key={project.id}
+                            logo={project.logo}
+                            title={project.title}
+                            url={project.url}
+                            description={dict.projects[project.id]}
+                            badge={project.beta ? dict.status.beta : undefined}
+                            />
                         ))}
                     </div>
                 </Card>
             </div>
             <div className="flex-[2] w-full flex flex-col gap-4">
                 <Card className="p-4 flex-1 gap-4">
-                    <p className="text-lg text-muted-foreground">Work</p>
+                    <p className="text-lg text-muted-foreground">{dict.status.work}</p>
                     <div className="flex flex-col gap-4">
-                        {WORKS.map((work, index) => (
-                            <Work key={index} {...work} />
+                        {WORKS.map((work) => (
+                            <Work
+                            key={work.id}
+                            image={work.image}
+                            title={work.title}
+                            role={dict.works[work.id].role}
+                            date={dict.works[work.id].period}
+                            url={work.url}
+                            />
                         ))}
                     </div>
                 </Card>
                 <Card className="p-4 flex-1 flex flex-col gap-2">
-                    <p className="text-lg text-muted-foreground">Contact me.</p>
-                    <ContactCard name="Evan Engels" image="https://media.licdn.com/dms/image/v2/D4E35AQHJWKVsQkk0PQ/profile-framedphoto-shrink_200_200/B4EaDaVU47G0AQ-/0/1790369419308?e=1793901600&v=beta&t=JMUKCwb3N9RmEmv0ZL0ykG5Gm8RxynbUrwd2bYhzE4I" badge="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxNRiTV1UJmwO2Z0oqPU_aTyXZHtylLBJkLbgKABBQoQ&s=10" description="Let's connect" url="https://www.linkedin.com/in/evan-engels-a25323229/" />
-                    <ContactCard name="Evan Engels" image="https://media.licdn.com/dms/image/v2/D4E35AQHJWKVsQkk0PQ/profile-framedphoto-shrink_200_200/B4EaDaVU47G0AQ-/0/1790369419308?e=1793901600&v=beta&t=JMUKCwb3N9RmEmv0ZL0ykG5Gm8RxynbUrwd2bYhzE4I" badge="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRc-rB0uN2gw9ldkWe9J4dqOTcM_t6jhONarAtuLPRTsQ&s=10" description="evangels@outlook.fr" url="mailto:evanengels@outlook.fr" />
+                    <p className="text-lg text-muted-foreground">{dict.status.contact}</p>
+                    <ContactCard {...CONTACTS.linkedin} description={dict.contact.linkedin} />
+                    <ContactCard {...CONTACTS.email} description={EMAIL} />
                 </Card>
             </div>
         </Section>
     );
 };
 
-const SIDE_PROJECTS: SideProjectProps[] = [
-        {
-        logo: UserGroup,
-        title: "Othalia",
-        description: "Family organization app (shared tasks, calendar…). In closed beta on iOS (TestFlight) and Android, used daily by my family before a public release.",
-        url: "https://othalia-famille.james5983.chatgpt.site/#",
-        badge: true
-    },
-    {
-        logo: Leaf,
-        title: "Carbon Snap",
-        description: "Track your real-time CO₂ footprint from browsing.",
-        url: "https://chromewebstore.google.com/detail/carbonsnap/oipiokjegoppokhdfibggmkgambnphnb/reviews?hl=fr&utm_source=ext_sidebar"
-    },
-    {
-        logo: Code,
-        title: "DocXpress Extension",
-        description: "Easily import and manage your administrative procedures and files from DocXpress or your computer.",
-        url: "https://chromewebstore.google.com/detail/docxpress/bhkiaoobnanlieifgoajojdgeoknnckg?hl=fr&utm_source=ext_sidebar"
-    },
-    {
-        logo: Amphora,
-        title: "Creacoeur",
-        description: "Website for an Association of Local Artists and Creators",
-        url: "https://asso-creacoeur.com/"
-    },
-    {
-        logo: FlaskConical,
-        title: "NevaUI",
-        description: "Experimental React component library exploring motion, interaction, spatial interfaces, physics, visual effects and layout.",
-        url: "https://github.com/EvanEngels/NevaUI"
-    }
+type ProjectId = keyof Dictionary["projects"];
+
+const SIDE_PROJECTS: { id: ProjectId; logo: LucideIcon; title: string; url: string; beta?: boolean }[] = [
+    { id: "othalia", logo: UserGroup, title: "Othalia", url: "https://othalia-famille.james5983.chatgpt.site/#", beta: true },
+    { id: "carbonSnap", logo: Leaf, title: "Carbon Snap", url: "https://chromewebstore.google.com/detail/carbonsnap/oipiokjegoppokhdfibggmkgambnphnb" },
+    { id: "docxpress", logo: Code, title: "DocXpress Extension", url: "https://chromewebstore.google.com/detail/docxpress/bhkiaoobnanlieifgoajojdgeoknnckg" },
+    { id: "creacoeur", logo: Amphora, title: "Creacoeur", url: "https://asso-creacoeur.com/" },
+    { id: "nevaUi", logo: FlaskConical, title: "NevaUI", url: "https://github.com/EvanEngels/NevaUI" },
 ];
 
-const WORKS: WorkProps[] = [
+type WorkId = keyof Dictionary["works"];
+
+const WORKS: { id: WorkId; image: string; title: string; url: string; }[] = [
     {
-        image: "https://media.licdn.com/dms/image/v2/D4D0BAQFfFYhOKaejsQ/company-logo_100_100/B4DZnniBZtGgAQ-/0/1760526080110/kasapes_logo?e=1795046400&v=beta&t=jBoRZk5uXwLtE9FhD1Ziqd6BC7ltb-Ei2b2XuqXO1P0",
+        id: "kasap",
+        image: "/logos/kasap.jpg",
         title: "Kasap",
-        role: "Swift developer",
-        date: "Mar-Aug 2026",
         url: "https://kasap.es/",
-        freelance: false
     },
     {
-        image: "https://media.licdn.com/dms/image/v2/D4E0BAQFEAByRcnS3jg/company-logo_100_100/B4EaE0wzFhH4AI-/0/1791886570067/epitech___european_institute_of_technology_logo?e=1795046400&v=beta&t=YC8cQ5NRP_5LCmDaJDJEM3wO_bchRcIHUqBgbRJl5_w",
+        id: "epitech",
+        image: "/logos/epitech.jpg",
         title: "Epitech Lille",
-        role: "Teaching assistant",
-        date: "2025-2026",
         url: "https://www.epitech.eu/ecole-informatique-lille/",
-        freelance: false
     },
     {
-        image: "https://media.licdn.com/dms/image/v2/D4E0BAQF4SOZZC7Wk7g/company-logo_100_100/B4EZVbHO..G0AY-/0/1740990378548?e=1795046400&v=beta&t=Mp5tbcLc_SaCgVq-sFzG7WBpR4jkiE9GYpb63L24WBc",
+        id: "docxpress",
+        image: "/logos/docxpress.jpg",
         title: "DocXpress",
-        role: "Co-Founder",
-        date: "2024-2026",
         url: "/",
-        freelance: false
     },
     {
-        image: "https://media.licdn.com/dms/image/v2/D4E0BAQHmhF10LkCsbw/company-logo_100_100/B4EZX8FFS_HkAU-/0/1743690946658/thetys_lab_logo?e=1795046400&v=beta&t=anGwjMb8dWZOxn9bg-hhEz7Yla8zyPoG4I8NO6-l_x4",
+        id: "thetys",
+        image: "/logos/thetys.jpg",
         title: "Thetys Lab",
-        role: "React Native Mobile developer",
-        date: "Feb-Jun 2024",
         url: "/",
-        freelance: false
     },
 ];

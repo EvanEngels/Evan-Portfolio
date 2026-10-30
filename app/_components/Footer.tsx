@@ -1,11 +1,13 @@
 import { Section } from "./Section";
+import { getDictionary } from "../_i18n";
 
-export const Footer = () => {
+export const Footer = async () => {
+    const dict = await getDictionary();
     return (
         <footer className="bg-card">
             <Section className="py-8">
                 <p className="text-muted-foreground text-sm">
-                    @Copywrite 2026 Evan Engels
+                    {dict.footer.rights}
                 </p>
             </Section>
         </footer>
