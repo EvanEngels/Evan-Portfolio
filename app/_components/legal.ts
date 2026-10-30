@@ -1,10 +1,9 @@
 // Informations obligatoires pour un entrepreneur individuel (LCEN, art. 6 III).
-// TODO Evan : renseigner l'adresse (domicile ou domiciliation) et le téléphone avant la mise en ligne.
 export const EDITOR = {
   name: "Evan Engels",
   siret: "930 679 535 00011",
-  address: "À COMPLÉTER",
-  phone: "À COMPLÉTER",
+  address: "28 rue du Fort, 59158 Mortagne-du-Nord, France",
+  phone: "07 82 90 88 32",
 };
 
 export const HOST = {
