@@ -39,6 +39,42 @@ export const en: Dictionary = {
   },
   footer: {
     rights: "All rights reserved.",
+    legal: "Legal notice",
+  },
+  legal: {
+    title: "Legal notice",
+    metaTitle: "Legal notice · Evan Engels",
+    back: "Back to home",
+    updated: "Last updated: October 30, 2026",
+    editor: {
+      title: "Site publisher",
+      status: "Sole trader (French micro-entrepreneur)",
+      siret: "SIRET:",
+      address: "Address:",
+      phone: "Phone:",
+      email: "Email:",
+      director: "Publication director:",
+    },
+    host: {
+      title: "Hosting",
+    },
+    data: {
+      title: "Personal data",
+      paragraphs: [
+        "This site has no forms and does not automatically collect any personal data.",
+        "If you contact me by email, the information you send is only used to reply to you. It is never shared with or sold to third parties. Online booking is handled by Cal.com, under its own privacy policy.",
+        "The hosting provider may record technical connection data (IP address, browser) to keep the service secure and running.",
+        "Under the GDPR, you can ask to access, correct or delete your data by writing to the email address above. You can also lodge a complaint with the CNIL, the French data protection authority (cnil.fr).",
+      ],
+    },
+    cookies: {
+      title: "Cookies",
+      text: "This site uses no advertising cookies and no audience measurement tools.",
+    },
+    property: {
+      title: "Intellectual property",
+      text: "The content of this site (text, visuals, code) belongs to Evan Engels unless stated otherwise. Logos and trademarks mentioned belong to their respective owners.",
+    },
   },
   meta: {
     title: "Evan Engels · Full-stack product developer, mobile & AI",

@@ -37,6 +37,42 @@ export const fr = {
   },
   footer: {
     rights: "Tous droits réservés.",
+    legal: "Mentions légales",
+  },
+  legal: {
+    title: "Mentions légales",
+    metaTitle: "Mentions légales · Evan Engels",
+    back: "Retour à l'accueil",
+    updated: "Dernière mise à jour : 30 octobre 2026",
+    editor: {
+      title: "Éditeur du site",
+      status: "Entrepreneur individuel (micro-entrepreneur)",
+      siret: "SIRET :",
+      address: "Adresse :",
+      phone: "Téléphone :",
+      email: "E-mail :",
+      director: "Directeur de la publication :",
+    },
+    host: {
+      title: "Hébergement",
+    },
+    data: {
+      title: "Données personnelles",
+      paragraphs: [
+        "Ce site ne contient aucun formulaire et ne collecte aucune donnée personnelle de façon automatique.",
+        "Si vous me contactez par e-mail, les informations que vous transmettez servent uniquement à vous répondre. Elles ne sont jamais cédées ni vendues à des tiers. La prise de rendez-vous en ligne est gérée par Cal.com, selon sa propre politique de confidentialité.",
+        "L'hébergeur peut enregistrer des données techniques de connexion (adresse IP, navigateur) pour assurer la sécurité et le bon fonctionnement du service.",
+        "Conformément au RGPD, vous pouvez demander l'accès à vos données, leur rectification ou leur suppression en m'écrivant à l'adresse e-mail ci-dessus. Vous pouvez aussi adresser une réclamation à la CNIL (cnil.fr).",
+      ],
+    },
+    cookies: {
+      title: "Cookies",
+      text: "Ce site n'utilise aucun cookie publicitaire ni aucun outil de mesure d'audience.",
+    },
+    property: {
+      title: "Propriété intellectuelle",
+      text: "Les contenus de ce site (textes, visuels, code) appartiennent à Evan Engels, sauf mention contraire. Les logos et marques cités appartiennent à leurs propriétaires respectifs.",
+    },
   },
   meta: {
     title: "Evan Engels · Développeur produit full-stack, mobile & IA",
